@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- START SEO OPTIMIZATION -->
+    <title>Anurag Builders | Custom, Affordable Website Design & Development Starting at ₹5000</title>
+    <meta name="description" content="Looking for the best website builder in India? Anurag Builders offers custom, unique website development starting at ₹5000—50% less than competitors. Get a high-performance site today.">
+    <!-- END SEO OPTIMIZATION -->
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000; /* Pure Black for Max Contrast */
+            color: #e5e7eb; /* Light Gray text */
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
+        }
+        
+        /* --- Preloader Style (Smooth Load Interface) --- */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000; /* Solid Black for dramatic fade */
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+        .preloader-text {
+            font-size: 2.5rem;
+            color: #00ffff;
+            text-shadow: 0 0 10px #00ffff, 0 0 20px rgba(0, 255, 255, 0.5);
+            animation: pulse 1.5s infinite alternate;
+        }
+        @keyframes pulse {
+            from { opacity: 0.5; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1.02); }
+        }
+
+        /* Custom Classes for Premium Feel */
+        .neon-text {
+            color: #00ffff; /* Electric Blue Accent */
+            text-shadow: 0 0 5px #00ffff, 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        .bg-neon-accent {
+            background-color: #00ffff;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
+        }
+
+        /* --- Custom Cursor Style --- */
+        #custom-cursor {
+            position: fixed;
+            width: 32px;
+            height: 32px;
+            border: 2px solid #00ffff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: exclusion;
+        }
+        .hovered-element {
+            width: 60px !important;
+            height: 60px !important;
+            background-color: rgba(0, 255, 255, 0.2) !important;
+        }
+
+        /* --- Scroll Animation Styles (More Dramatic) --- */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(60px) skewY(2deg); /* Added skew for dynamic entry */
+            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); /* Slower, smoother easing */
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0) skewY(0deg);
+        }
+
+        /* --- Project Card 3D Tilt Style (Used only for the process cards now) --- */
+        .tilt-card {
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; 
+            will-change: transform;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: linear-gradient(145deg, #0f172a, #030712); /* Subtle gradient for depth */
+        }
+        .tilt-card:hover {
+             box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
+        }
+        
+        /* --- Typing/Glitch Effect for Hero --- */
+        .glitch-text span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: text-reveal 0.5s forwards;
+        }
+        @keyframes text-reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Active Tab Button Style */
+        .tab-active {
+            color: #000 !important;
+            background-color: #00ffff !important;
+            border-color: #00ffff !important;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Preloader Screen -->
+    <div id="preloader">
+        <div class="preloader-text font-extrabold uppercase tracking-widest">
+            _INITIALIZING_
+        </div>
+    </div>
+
+    <!-- Custom Animated Cursor -->
+    <div id="custom-cursor" class="hidden md:block"></div>
+
+    <!-- Header / Navigation -->
+    <header class="p-6 md:p-10 sticky top-0 bg-black/90 backdrop-blur-md z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <!-- Logo / Brand Title -->
+            <a href="#" class="text-3xl font-extrabold tracking-widest text-white hover:text-neon-accent transition duration-300" data-hover-cursor>
+                <span class="neon-text">ANURAG</span> BUILDERS
+            </a>
+            <!-- Desktop Navigation Links -->
+            <nav class="hidden md:flex space-x-8 items-center text-lg font-medium">
+                <a href="#showcase" class="hover:text-neon-accent transition duration-300" data-hover-cursor>Showcase</a>
+                <a href="#marketing" class="hover:text-neon-accent transition duration-300" data-hover-cursor>Pricing</a>
+                <a href="#process" class="hover:text-neon-accent transition duration-300" data-hover-cursor>Protocol</a>
+                <!-- CTA Button (Slightly Smaller for Navbar) -->
+                <a href="#contact" class="px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-lg bg-neon-accent text-gray-900 border-2 border-neon-accent hover:bg-transparent hover:text-neon-accent transition-all duration-300" data-hover-cursor>
+                    START YOUR PROJECT NOW
+                </a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-white focus:outline-none" data-hover-cursor>
+                <svg class="w-8 h-8 neon-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-black/95 z-50 transform -translate-y-full transition-transform duration-500 ease-in-out md:hidden">
+        <div class="flex justify-end p-6">
+            <button id="mobile-menu-close" class="text-3xl text-white focus:outline-none" data-hover-cursor>
+                 <svg class="w-8 h-8 neon-text" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+        <nav class="flex flex-col items-center justify-center space-y-8 h-4/5 text-2xl font-bold">
+            <a href="#showcase" class="text-white hover:text-neon-accent transition duration-300 mobile-menu-link" data-hover-cursor>Showcase</a>
+            <a href="#marketing" class="text-white hover:text-neon-accent transition duration-300 mobile-menu-link" data-hover-cursor>Pricing</a>
+            <a href="#process" class="text-white hover:text-neon-accent transition duration-300 mobile-menu-link" data-hover-cursor>Protocol</a>
+            <a href="#contact" class="text-white hover:text-neon-accent transition duration-300 mobile-menu-link" data-hover-cursor>Contact</a>
+            <!-- Prominent Mobile CTA -->
+            <a href="#contact" class="mt-10 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg bg-neon-accent text-gray-900 border-2 border-neon-accent transition-all duration-300 mobile-menu-link" data-hover-cursor>
+                START PROJECT NOW
+            </a>
+        </nav>
+    </div>
+
+    <!-- 1. Hero Section: Dynamic, Mouse-Controlled Parallax -->
+    <section id="hero-section" class="max-w-7xl mx-auto px-6 py-20 md:py-40 text-center relative z-10 overflow-hidden">
+        <div class="space-y-6">
+            <!-- Wrapper for Parallax Effect -->
+            <div id="hero-parallax-wrapper">
+                <h1 id="hero-title" class="glitch-text text-5xl md:text-8xl font-black uppercase leading-tight md:leading-snug text-white" data-parallax-strength="0.05">
+                    <span class="neon-text">CRAFTING</span> DIGITAL FUTURES
+                </h1>
+            </div>
+            <p class="text-xl md:text-2xl max-w-4xl mx-auto text-gray-400 opacity-0 animate-fadeIn" style="animation-delay: 1.5s;">
+                Advanced logic meets visionary design. Simplified.
+            </p>
+        </div>
+    </section>
+
+    <!-- 2. Industry Showcase Section: Dynamic Tabbed Content -->
+    <section id="showcase" class="max-w-7xl mx-auto px-6 py-20 md:py-32">
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-white scroll-reveal">
+            Industry <span class="neon-text">Showroom</span>
+        </h2>
+
+        <!-- Industry Selection Buttons - UPDATED FOR MORE OPTIONS -->
+        <div class="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-12 scroll-reveal" data-scroll-delay="0.1">
+            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300 tab-active" data-industry="restaurant" data-hover-cursor>
+                Restaurant / Cafe
+            </button>
+            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="realestate" data-hover-cursor>
+                Real Estate / Property
+            </button>
+            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="marketing" data-hover-cursor>
+                Marketing / Agency
+            </button>
+            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="portfolio" data-hover-cursor>
+                Personal Portfolio
+            </button>
+            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="entrepreneur" data-hover-cursor>
+                Entrepreneur / Startup
+            </button>
+            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="custom" data-hover-cursor>
+                Custom / Unique
+            </button>
+        </div>
+
+        <!-- Dynamic Content Display Area -->
+        <div id="showroom-content" class="bg-gray-900 p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-800 scroll-reveal" data-scroll-delay="0.3">
+            <!-- Content will be injected here by JavaScript -->
+            <div class="md:flex md:space-x-12">
+                <!-- Mock Design Preview (Left) -->
+                <div class="md:w-3/5 mb-8 md:mb-0">
+                    <h3 class="text-xl font-bold uppercase tracking-widest text-neon-accent mb-4">Mock Design Preview</h3>
+                    <div id="design-preview" class="w-full h-64 md:h-96 rounded-lg border-4 border-white shadow-xl flex justify-center items-center text-center text-gray-400 p-4" style="background-color: #0d0d0d; border-color: #00ffff;">
+                        <span class="text-lg font-semibold">Live Preview of **Restaurant** UI/UX.</span>
+                    </div>
+                </div>
+
+                <!-- Features & CTA (Right) -->
+                <div class="md:w-2/5">
+                    <h3 id="industry-title" class="text-4xl font-extrabold text-white mb-4">Fine Dining & Delivery Platform</h3>
+                    <p id="industry-description" class="text-gray-400 mb-6">
+                        High-impact design focused on visual menu presentation and seamless online ordering.
+                    </p>
+                    <h4 class="text-lg font-bold neon-text mb-2">Key Features:</h4>
+                    <ul id="industry-features" class="text-gray-400 space-y-2 list-disc list-inside mb-8 text-sm">
+                        <li>**Online Reservation** Integration.</li>
+                        <li>Visual Menu & Gallery Slideshows.</li>
+                        <li>Optimized Mobile Order Flow.</li>
+                        <li>High-Speed Page Loading.</li>
+                    </ul>
+                    <a href="#contact" class="w-full inline-block text-center px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg bg-neon-accent text-gray-900 border-2 border-neon-accent hover:bg-transparent hover:text-neon-accent transition-all duration-300" data-hover-cursor>
+                        CONTACT NOW - Build This!
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2.5. Value Proposition / Marketing Section -->
+    <section id="marketing" class="max-w-7xl mx-auto px-6 py-20 md:py-32">
+        <div class="grid md:grid-cols-2 gap-12 items-center bg-gray-950/50 p-8 md:p-12 rounded-3xl border border-gray-900 shadow-2xl">
+            <!-- Left Column: Value Proposition & Quote -->
+            <div class="text-left">
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-8 text-white scroll-reveal">
+                    Affordable Website <span class="neon-text">Pricing</span>
+                </h2>
+                <p class="text-xl text-gray-400 mb-6 scroll-reveal" data-scroll-delay="0.1">
+                    In a crowded digital world, creators need more than just a website; they need an engineered advantage. We eliminate the industry standard of inflated costs without compromising on cutting-edge design or robust architecture.
+                </p>
+
+                <blockquote class="border-l-4 border-neon-accent pl-6 py-3 my-8 italic text-gray-300 scroll-reveal" data-scroll-delay="0.3">
+                    "Thousands of creators exist. Only a few break through. We provide the essential, custom-built infrastructure at a price point that makes scaling immediately viable. You won't find this level of quality and affordability elsewhere."
+                </blockquote>
+
+                <div class="p-6 bg-neon-accent rounded-lg shadow-xl text-gray-900 font-extrabold text-center scroll-reveal" data-scroll-delay="0.5">
+                    <p class="text-2xl md:text-3xl uppercase tracking-wider">
+                        <span class="block">Websites Starting Only From</span>
+                        <strong class="text-5xl md:text-6xl my-2 block">₹5000</strong>
+                        <span class="block text-lg font-semibold">(50% Less Than Competitors)</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Column: Unique Offering Highlights -->
+            <div class="space-y-6 md:pl-10">
+                <h3 class="text-3xl font-bold neon-text uppercase tracking-wider mb-6 scroll-reveal" data-scroll-delay="0.7">
+                    Why Our Protocol?
+                </h3>
+                <ul class="space-y-6 text-lg text-gray-300">
+                    <li class="p-4 rounded-lg bg-gray-900 border border-gray-800 flex items-start space-x-4 scroll-reveal" data-scroll-delay="0.8">
+                        <span class="text-2xl neon-text flex-shrink-0">✓</span>
+                        <div>
+                            <strong class="text-white block">Unmatched Affordability:</strong> We are proud to offer prices **50% lower** than industry averages, without ever sacrificing quality or performance.
+                        </div>
+                    </li>
+                    <li class="p-4 rounded-lg bg-gray-900 border border-gray-800 flex items-start space-x-4 scroll-reveal" data-scroll-delay="0.9">
+                        <span class="text-2xl neon-text flex-shrink-0">✓</span>
+                        <div>
+                            <strong class="text-white block">Unique, Non-Template Builds:</strong> Your project is custom-engineered from the ground up, guaranteeing a unique solution that competitors simply cannot replicate at this price.
+                        </div>
+                    </li>
+                    <li class="p-4 rounded-lg bg-gray-900 border border-gray-800 flex items-start space-x-4 scroll-reveal" data-scroll-delay="1.0">
+                        <span class="text-2xl neon-text flex-shrink-0">✓</span>
+                        <div>
+                            <strong class="text-white block">Engineering-First Approach:</strong> Focus on speed, SEO, and robust scaling from day one. Your website isn't just pretty; it's a high-performance machine.
+                        </div>
+                    </li>
+                </ul>
+                <a href="#contact" class="inline-block mt-6 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg border-2 border-neon-accent text-white hover:bg-neon-accent hover:text-gray-900 transition-all duration-300 transform hover:scale-105" data-hover-cursor>
+                    Claim Your 50% Off Offer
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. Process Section: AI-Inspired Workflow (Unchanged) -->
+    <section id="process" class="max-w-7xl mx-auto px-6 py-20 md:py-32 text-center">
+        <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-white scroll-reveal">
+            The <span class="neon-text">Protocol</span>
+        </h2>
+        <p class="text-xl md:text-2xl max-w-3xl mx-auto text-gray-400 mb-20 scroll-reveal" data-scroll-delay="0.1">
+            Engineered efficiency for groundbreaking results.
+        </p>
+
+        <div class="relative grid md:grid-cols-3 gap-12 text-left">
+            <!-- Line connecting steps (for visual flow) -->
+            <div class="absolute inset-y-0 left-1/2 transform -translate-x-1/2 w-1 bg-gray-700 hidden md:block" style="height: 90%;"></div>
+            
+            <!-- Step 1: Architect -->
+            <div class="p-6 bg-gray-900 rounded-lg shadow-xl tilt-card scroll-reveal" data-scroll-delay="0.2" data-tilt-max="10">
+                <div class="text-3xl font-bold neon-text mb-4">01. Architect</div>
+                <h3 class="text-2xl font-semibold text-white mb-3">System Mapping</h3>
+                <ul class="text-gray-400 space-y-1 list-disc list-inside">
+                    <li>Goal & Constraint Analysis.</li>
+                    <li>High-Level Architecture Design.</li>
+                    <li>Performance Blueprint.</li>
+                </ul>
+            </div>
+
+            <!-- Step 2: Engineer -->
+            <div class="p-6 bg-gray-900 rounded-lg shadow-xl tilt-card scroll-reveal" data-scroll-delay="0.4" data-tilt-max="10">
+                <div class="text-3xl font-bold neon-text mb-4">02. Engineer</div>
+                <h3 class="text-2xl font-semibold text-white mb-3">Code Calibration</h3>
+                <ul class="text-gray-400 space-y-1 list-disc list-inside">
+                    <li>Precision Component Coding.</li>
+                    <li>Cross-Browser Optimization.</li>
+                    <li>Security and Efficiency Focus.</li>
+                </ul>
+            </div>
+
+            <!-- Step 3: Launch -->
+            <div class="p-6 bg-gray-900 rounded-lg shadow-xl tilt-card scroll-reveal" data-scroll-delay="0.6" data-tilt-max="10">
+                <div class="text-3xl font-bold neon-text mb-4">03. Launch</div>
+                <h3 class="text-2xl font-semibold text-white mb-3">Final Deployment</h3>
+                <ul class="text-gray-400 space-y-1 list-disc list-inside">
+                    <li>Rigorous Pre-Launch Testing.</li>
+                    <li>Performance Tuning (Final Pass).</li>
+                    <li>Seamless Go-Live & Handover.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Contact Section (Unchanged) -->
+    <section id="contact" class="max-w-4xl mx-auto px-6 py-20 md:py-32 text-center">
+        <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-white scroll-reveal">
+            Initiate <span class="neon-text">Transmission</span>
+        </h2>
+        <p class="text-xl max-w-2xl mx-auto text-gray-400 mb-10 scroll-reveal" data-scroll-delay="0.1">
+            Ready to engineer your next digital breakthrough?
+        </p>
+
+        <!-- Mock Contact Form -->
+        <form class="space-y-6 bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl shadow-2xl scroll-reveal" data-scroll-delay="0.3">
+            <input type="text" placeholder="Your Designation/Name" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor>
+            <input type="email" placeholder="Secure Email Address" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor>
+            <textarea placeholder="Project Specifications (Brief)" rows="5" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor></textarea>
+            <button type="submit" class="w-full py-4 text-xl font-bold uppercase tracking-wider rounded-lg bg-neon-accent text-gray-900 border-2 border-neon-accent hover:bg-transparent hover:text-neon-accent transition-all duration-300 transform hover:scale-[1.01]" data-hover-cursor>
+                CONTACT NOW
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-10 bg-black border-t border-gray-800 text-center text-gray-500">
+        <p class="text-sm">&copy; 2024 Anurag Builders | Custom Website Solutions. Engineered with Precision.</p>
+    </footer>
+
+    <!-- JavaScript for Animations and Cursor -->
+    <script>
+        // --- Industry Data (For Dynamic Switching) ---
+        const industryData = {
+            'restaurant': {
+                title: "Fine Dining & Delivery Platform",
+                description: "High-impact design focused on visual menu presentation and seamless online ordering.",
+                previewText: "Live Preview of **Restaurant** UI/UX.",
+                features: [
+                    "Online Reservation Integration.",
+                    "Visual Menu & Gallery Slideshows.",
+                    "Optimized Mobile Order Flow.",
+                    "High-Speed Page Loading."
+                ]
+            },
+            'realestate': {
+                title: "Luxury Property Listing Portal",
+                description: "A fast, data-rich platform engineered to showcase properties with immersive visuals.",
+                previewText: "Live Preview of **Real Estate** Portal Dashboard.",
+                features: [
+                    "Interactive 360° Virtual Tours (Mock).",
+                    "Advanced Map Search Filtering.",
+                    "Agent Profile & Contact System.",
+                    "Low-Latency Image Loading."
+                ]
+            },
+            'marketing': {
+                title: "High-Conversion Agency Website",
+                description: "A dynamic marketing site built to capture leads and clearly present service ROI data.",
+                previewText: "Live Preview of **Marketing Agency** Landing Page.",
+                features: [
+                    "Scroll-Triggered Data Stats.",
+                    "Integrated Lead-Capture Forms.",
+                    "Case Study Carousel (Dynamic).",
+                    "A/B Test Ready Architecture."
+                ]
+            },
+            'portfolio': {
+                title: "Personal Brand Portfolio",
+                description: "A highly custom, animated platform designed for professional branding and job acquisition.",
+                previewText: "Live Preview of **Personal Portfolio** with Custom Animation.",
+                features: [
+                    "Custom Cursor & Mouse Effects.",
+                    "Animated Skills Timeline.",
+                    "Downloadable Resume Link.",
+                    "Clear, Direct Contact CTA."
+                ]
+            },
+            'entrepreneur': { // NEW DATA
+                title: "Scalable Startup MVP & Pitch Deck",
+                description: "Building the Minimum Viable Product (MVP) required for rapid testing and investor pitches.",
+                previewText: "Live Preview of **Startup MVP** User Flow.",
+                features: [
+                    "Rapid Prototype Development.",
+                    "Database Integration (NoSQL).",
+                    "User Authentication & Roles.",
+                    "Scalable Cloud Architecture."
+                ]
+            },
+            'custom': { // NEW DATA
+                title: "Unique / Highly Specialized Solution",
+                description: "Complex projects, unique integrations, and solutions that require specialized engineering.",
+                previewText: "Live Preview of **Custom System** Interface.",
+                features: [
+                    "API Integration (Third-Party/Legacy).",
+                    "Custom Logic & Algorithm Implementation.",
+                    "Data Migration & Cleaning.",
+                    "Confidential Project Assurance."
+                ]
+            }
+        };
+
+        // --- Content Switching Function ---
+        function displayIndustry(key) {
+            const data = industryData[key];
+            if (!data) return;
+
+            // Update content elements
+            document.getElementById('industry-title').textContent = data.title;
+            document.getElementById('industry-description').textContent = data.description;
+            document.getElementById('design-preview').innerHTML = `<span class="text-lg font-semibold">${data.previewText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</span>`;
+            
+            // Update features list
+            const featuresList = document.getElementById('industry-features');
+            featuresList.innerHTML = '';
+            data.features.forEach(feature => {
+                const li = document.createElement('li');
+                li.innerHTML = feature.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                featuresList.appendChild(li);
+            });
+
+            // Update button styles
+            document.querySelectorAll('.industry-tab').forEach(btn => {
+                btn.classList.remove('tab-active');
+            });
+            document.querySelector(`[data-industry="${key}"]`).classList.add('tab-active');
+        }
+
+
+        // --- 1. Preloader Logic (Smooth Load) ---
+        function runPreloader() {
+            const preloader = document.getElementById('preloader');
+            // Wait for 1.5 seconds (to show the cool animation) then fade out
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                // Remove it from the DOM after transition is complete
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    document.body.style.overflowY = 'auto'; // Re-enable scrolling
+                    // Start main animations after preloader is gone
+                    setupScrollReveal();
+                    runHeroTextAnimation();
+                }, 1000); // 1 second matches the CSS transition duration
+            }, 1500);
+        }
+        
+        // --- 2. Hero Text Reveal Animation ---
+        function runHeroTextAnimation() {
+            const titleElement = document.getElementById('hero-title');
+            if (!titleElement) return;
+
+            const text = titleElement.textContent;
+            titleElement.innerHTML = '';
+
+            // Split the text into individual characters and wrap them in spans
+            text.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.textContent = char === ' ' ? '\u00A0' : char; 
+                span.style.animationDelay = `${0.03 * index}s`;
+                titleElement.appendChild(span);
+            });
+        }
+        
+        // --- 3. Scroll Reveal Animation using Intersection Observer ---
+        function setupScrollReveal() {
+            const revealElements = document.querySelectorAll('.scroll-reveal');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const delay = parseFloat(entry.target.getAttribute('data-scroll-delay')) || 0;
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, delay * 1000); 
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                rootMargin: '0px',
+                threshold: 0.1 
+            });
+
+            revealElements.forEach(el => observer.observe(el));
+        }
+
+        // --- 4. Custom Cursor Logic (Desktop Only) ---
+        function setupCustomCursor() {
+            const cursor = document.getElementById('custom-cursor');
+            if (!cursor) return;
+
+            // Follow the mouse
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+            });
+
+            // Handle hover states for interactive elements (links, buttons, inputs)
+            const interactiveElements = document.querySelectorAll('a, button, input, textarea, [data-hover-cursor]');
+
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hovered-element'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hovered-element'));
+            });
+        }
+
+        // --- 5. Parallax Mouse Effect for Hero ---
+        function setupParallaxHero() {
+            const target = document.getElementById('hero-title');
+            if (!target) return;
+
+            const strength = parseFloat(target.getAttribute('data-parallax-strength')) || 0.05;
+
+            document.addEventListener('mousemove', (e) => {
+                // Calculate position relative to the center of the viewport
+                const x = (e.clientX - window.innerWidth / 2) * strength;
+                const y = (e.clientY - window.innerHeight / 2) * strength;
+
+                // Apply slight perspective and rotation for a 3D feel
+                target.style.transform = `
+                    translate3d(${-x}px, ${-y}px, 0)
+                    rotateX(${-y * 0.1}deg) 
+                    rotateY(${x * 0.1}deg)
+                `;
+                target.style.transition = 'transform 0.1s ease-out';
+            });
+        }
+
+        // --- 6. 3D Tilt Effect for Process Cards ---
+        function setupTiltEffect() {
+            const cards = document.querySelectorAll('.tilt-card');
+            
+            cards.forEach(card => {
+                const maxTilt = parseFloat(card.getAttribute('data-tilt-max')) || 10;
+                
+                // Function to handle tilt calculation
+                const handleTilt = (x, y, rect) => {
+                    const centerX = rect.width / 2;
+                    const centerY = rect.height / 2;
+                    
+                    // Calculate rotation angles
+                    const rotateX = ((y - centerY) / centerY) * maxTilt;
+                    const rotateY = ((x - centerX) / centerX) * -maxTilt; // Negative for correct direction
+
+                    // Apply the 3D transform
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                };
+
+                // Mouse Events (Desktop)
+                card.addEventListener('mousemove', (e) => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    handleTilt(x, y, rect);
+                });
+
+                card.addEventListener('mouseleave', () => {
+                    // Reset on mouse leave with transition
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                });
+                
+                // Touch Events (Mobile - for a simpler interaction, tilt on press)
+                card.addEventListener('touchstart', (e) => {
+                    e.preventDefault(); // Prevent accidental scrolling
+                    const rect = card.getBoundingClientRect();
+                    // Use a fixed tilt angle for touch press/hold
+                    const rotateX = 5;
+                    const rotateY = -5; 
+                    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
+                }, { passive: false });
+
+                card.addEventListener('touchend', () => {
+                    // Reset on touch release
+                    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+                });
+            });
+        }
+
+        // --- 7. Mobile Menu Logic ---
+        function setupMobileMenu() {
+            const openBtn = document.getElementById('mobile-menu-button');
+            const closeBtn = document.getElementById('mobile-menu-close');
+            const overlay = document.getElementById('mobile-menu-overlay');
+            const links = document.querySelectorAll('.mobile-menu-link');
+
+            function toggleMenu() {
+                // Toggle the state of the overlay
+                if (overlay.classList.contains('-translate-y-full')) {
+                    overlay.classList.remove('-translate-y-full');
+                    overlay.classList.add('translate-y-0');
+                    document.body.style.overflowY = 'hidden'; // Disable background scroll
+                } else {
+                    overlay.classList.remove('translate-y-0');
+                    overlay.classList.add('-translate-y-full');
+                    document.body.style.overflowY = 'auto'; // Enable background scroll
+                }
+            }
+
+            openBtn.addEventListener('click', toggleMenu);
+            closeBtn.addEventListener('click', toggleMenu);
+            
+            // Close menu when a navigation link is clicked
+            links.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+        }
+
+        // --- Initialize All Functions on Load ---
+        window.onload = function() {
+            // Set up event listeners for industry tabs
+            document.querySelectorAll('.industry-tab').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    displayIndustry(e.target.getAttribute('data-industry'));
+                });
+            });
+            // Display the first industry by default
+            displayIndustry('restaurant');
+
+            // Must run preloader first, which then calls other setup functions
+            runPreloader();
+            setupParallaxHero();
+            setupTiltEffect();
+            setupMobileMenu(); // Call new mobile menu logic
+
+            // Only initialize the custom cursor on larger screens
+            if (window.innerWidth >= 768) {
+                setupCustomCursor();
+            }
+        };
+    </script>
+</body>
+</html>
