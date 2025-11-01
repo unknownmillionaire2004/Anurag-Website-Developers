@@ -169,25 +169,39 @@
             50% { box-shadow: 0 0 20px #00ffff, 0 0 40px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.4); }
             100% { box-shadow: 0 0 5px #00ffff, 0 0 10px rgba(0, 255, 255, 0.5); }
         }
-
+        
+        /* Primary Action Button: CONTACT NOW (Cyan Fill on Hover) */
         .creative-neon-button {
-            /* Initial "Powered On" State: Subtle background and shadow */
             color: #00ffff; 
             border-color: #00ffff;
-            background-color: rgba(0, 255, 255, 0.05); /* Subtle transparent fill */
+            background-color: rgba(0, 255, 255, 0.05); 
             transition: all 0.3s ease-in-out;
             border: 2px solid #00ffff;
-            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* Constant subtle glow */
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5); 
             will-change: transform, box-shadow;
         }
-
         .creative-neon-button:hover {
-            /* Hover State: Full Color Fill, Dramatic Pulsating Shadow */
-            color: #000000; /* Dark text against bright background */
-            text-shadow: none; /* Remove text shadow when background is bright */
-            background-color: #00ffff; /* Solid fill */
-            animation: glow-pulse 1.5s infinite; /* Pulsating border/shadow animation */
+            color: #000000; 
+            text-shadow: none; 
+            background-color: #00ffff; 
+            animation: glow-pulse 1.5s infinite; 
             transform: scale(1.02); 
+        }
+
+        /* Secondary Action Button: VIEW LIVE SITE (White Fill on Hover) */
+        .creative-neon-button-alt {
+            color: #e5e7eb; /* Light gray text */
+            border-color: #94a3b8; /* Slate gray border */
+            background-color: transparent;
+            box-shadow: 0 0 5px rgba(148, 163, 184, 0.3);
+        }
+        .creative-neon-button-alt:hover {
+            color: #000000; 
+            text-shadow: none;
+            background-color: #e5e7eb; 
+            animation: none; /* Disable pulsing glow on secondary button */
+            transform: scale(1.02);
+            box-shadow: 0 0 15px rgba(229, 231, 235, 0.7);
         }
         
         /* Holographic Header Effect */
@@ -236,7 +250,7 @@
             text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); 
         }
 
-        /* Preview Overlay Style */
+        /* Preview Overlay Style (UNUSED, but kept) */
         .preview-overlay {
             background-color: rgba(0, 0, 0, 0.7);
             transition: opacity 0.3s ease;
@@ -245,8 +259,6 @@
         
         /* Iframe styling for the live preview */
         #design-preview iframe {
-            /* Disable user interaction inside the iframe so the parent <a> tag works */
-            pointer-events: none; 
             /* Subtle futuristic visual effect */
             filter: grayscale(10%); 
             transform: scale(1.01);
@@ -397,11 +409,11 @@
             <div class="md:flex md:space-x-12">
                 <!-- Mock Design Preview (Left) -->
                 <div class="md:w-3/5 mb-8 md:mb-0">
-                    <h3 class="text-xl font-bold uppercase tracking-widest text-neon-accent mb-4">Live Project Screenshot</h3>
-                    <!-- Preview Container is now a clickable, dynamic element -->
+                    <h3 class="text-xl font-bold uppercase tracking-widest text-neon-accent mb-4">Live Project Preview</h3>
+                    <!-- Preview Container for the Iframe -->
                     <div id="design-preview" class="w-full h-64 md:h-96 rounded-lg border-4 border-white shadow-xl flex justify-center items-center text-center text-gray-400 p-4 relative overflow-hidden" style="background-color: #0d0d0d; border-color: #00ffff;">
-                        <!-- Placeholder Span (Removed by JS once content is loaded) -->
-                        <span class="text-lg font-semibold">Live Preview of **Restaurant** UI/UX.</span>
+                        <!-- Content (Iframe) is injected here -->
+                        <span class="text-lg font-semibold">Live Preview is loading...</span>
                     </div>
                 </div>
 
@@ -418,7 +430,13 @@
                         <li>Optimized Mobile Order Flow.</li>
                         <li>High-Speed Page Loading.</li>
                     </ul>
-                    <!-- CTA Button (NOW REDIRECTS TO WHATSAPP) -->
+                    
+                    <!-- NEW: Dedicated VIEW LIVE SITE Button (Secondary CTA) -->
+                    <a id="view-live-site-btn" target="_blank" class="w-full inline-block text-center px-8 py-3 mb-4 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button-alt" data-hover-cursor>
+                        VIEW LIVE SITE
+                    </a>
+
+                    <!-- CTA Button (NOW REDIRECTS TO WHATSAPP - Primary CTA) -->
                     <a href="https://wa.me/91951574045" target="_blank" class="w-full inline-block text-center px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button" data-hover-cursor>
                         CONTACT NOW - Build This!
                     </a>
@@ -653,7 +671,7 @@
             }
         };
 
-        // --- Content Switching Function (UPDATED for LIVE IFRAME PREVIEW) ---
+        // --- Content Switching Function (UPDATED for LIVE IFRAME PREVIEW and NEW BUTTON) ---
         function displayIndustry(key) {
             const data = industryData[key];
             if (!data) return;
@@ -664,23 +682,26 @@
             
             // 2. Prepare dynamic content structure
             const previewUrl = data.previewUrl || "#"; 
+            
+            // --- START REVERT CHANGE: RE-WRAP IFRAME AND RESTORE OVERLAY ---
+            
             const iframeContainerStyle = "w-full h-full relative"; 
 
-            // Iframe element: Set to load the live site, disable pointer events, and apply a small filter/scale effect
+            // Iframe element: Set pointer-events to none so the parent <a> link is clickable
             const iframeHtml = `
                 <iframe 
                     src="${previewUrl}" 
                     loading="lazy"
                     sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                    style="width: 100%; height: 100%; border: 0; pointer-events: none; filter: grayscale(10%); transform: scale(1.01);"
+                    style="width: 100%; height: 100%; border: 0; filter: grayscale(10%); transform: scale(1.01); pointer-events: none;"
                     title="Live Website Preview"
                 ></iframe>
             `;
 
-            // The clickable <a> tag wraps the whole preview area
+            // The clickable <a> tag wraps the whole preview area (Must be relative for overlay)
             const wrapperStart = `<a href="${previewUrl}" target="_blank" class="w-full h-64 md:h-96 absolute inset-0 cursor-pointer hover:scale-[1.01] transition-transform duration-300 relative group overflow-hidden block" data-hover-cursor style="transform-origin: center;">`;
             
-            // The overlay text
+            // The overlay text (z-index 20 ensures it's above the iframe)
             const overlay = `
                 <div class="absolute inset-0 preview-overlay flex justify-center items-center opacity-0 group-hover:opacity-100 transition duration-300 z-20"> 
                     <span class="text-xl neon-text font-bold tracking-widest border-2 border-neon-accent p-3 rounded-lg bg-black/50">VIEW LIVE SITE</span>
@@ -695,26 +716,27 @@
                 </div>
             ` + wrapperEnd;
             
+            // --- END REVERT CHANGE ---
+
             // 3. Inject new structure into the preview container
             const previewContainer = document.getElementById('design-preview');
             
-            // Reset container styling to correctly display the iframe inside
+            // Reset container styling to correctly display the wrapper <a> tag inside
             previewContainer.innerHTML = '';
             previewContainer.style.backgroundColor = 'transparent'; 
             previewContainer.style.border = 'none';
             previewContainer.classList.remove('flex', 'justify-center', 'items-center', 'p-4', 'text-center');
             previewContainer.style.borderColor = 'transparent';
             
-            // Append the new content (the clickable <a> tag containing the iframe)
+            // Append the new content (the wrapper <a> tag)
             previewContainer.appendChild(document.createRange().createContextualFragment(previewContent));
             
             // Restore necessary parent styling
             previewContainer.classList.add('flex', 'justify-center', 'items-center', 'p-4', 'text-center');
             previewContainer.style.backgroundColor = '#0d0d0d'; 
             previewContainer.style.borderColor = '#00ffff'; 
-
-
-            // 4. Update features list (unchanged logic)
+            
+            // 4. Update features list
             const featuresList = document.getElementById('industry-features');
             featuresList.innerHTML = '';
             data.features.forEach(feature => {
@@ -723,7 +745,13 @@
                 featuresList.appendChild(li);
             });
 
-            // 5. Update button styles (unchanged logic)
+            // 5. Update the new dedicated button link (This button remains functional)
+            const liveSiteBtn = document.getElementById('view-live-site-btn');
+            if(liveSiteBtn) {
+                liveSiteBtn.href = previewUrl;
+            }
+
+            // 6. Update button styles (unchanged logic)
             document.querySelectorAll('.industry-tab').forEach(btn => {
                 btn.classList.remove('tab-active');
             });
