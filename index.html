@@ -243,6 +243,37 @@
             cursor: pointer;
         }
 
+        /* --- CONTACT LINKS FIX (NEW CUSTOM STYLES) --- */
+        /* Base styles for the Email Link (White text, Cyan border/shadow) */
+        #email-link {
+            border: 2px solid #00ffff;
+            color: #e5e7eb; /* Light gray text for visibility */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* Subtle glow */
+            background-color: rgba(0, 255, 255, 0.05); /* Very subtle base fill */
+        }
+        /* Hover styles for the Email Link (Black text, Solid Cyan fill) */
+        #email-link:hover {
+            color: #000000; /* Force black text */
+            background-color: #00ffff; /* Force solid neon cyan background */
+            border-color: #00ffff;
+            text-shadow: none; /* Remove shadow for solid contrast */
+        }
+        
+        /* Base styles for the WhatsApp Link (Green text, Green border/shadow) */
+        #whatsapp-link {
+            border: 2px solid #25D366;
+            color: #25D366; 
+            text-shadow: 0 0 5px rgba(37, 211, 102, 0.5);
+            background-color: rgba(37, 211, 102, 0.05);
+        }
+        /* Hover styles for the WhatsApp Link (Black text, Solid Green fill) */
+        #whatsapp-link:hover {
+            color: #000000; /* Force black text */
+            background-color: #25D366; /* Force solid green background */
+            border-color: #25D366;
+            text-shadow: none;
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -273,8 +304,8 @@
                 <a href="#showcase" class="nav-link-hover transition duration-300" data-hover-cursor>Showcase</a>
                 <a href="#marketing" class="nav-link-hover transition duration-300" data-hover-cursor>Pricing</a>
                 <a href="#process" class="nav-link-hover transition duration-300" data-hover-cursor>Protocol</a>
-                <!-- CTA Button (NOW USING CREATIVE CLASS) -->
-                <a href="#contact" class="px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button" data-hover-cursor>
+                <!-- CTA Button (NOW REDIRECTS TO WHATSAPP) -->
+                <a href="https://wa.me/91951574045" target="_blank" class="px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button" data-hover-cursor>
                     START YOUR PROJECT NOW
                 </a>
             </nav>
@@ -299,8 +330,8 @@
             <a href="#marketing" class="text-white nav-link-hover transition duration-300 mobile-menu-link" data-hover-cursor>Pricing</a>
             <a href="#process" class="text-white nav-link-hover transition duration-300 mobile-menu-link" data-hover-cursor>Protocol</a>
             <a href="#contact" class="text-white nav-link-hover transition duration-300 mobile-menu-link" data-hover-cursor>Contact</a>
-            <!-- Prominent Mobile CTA (NOW USING CREATIVE CLASS) -->
-            <a href="#contact" class="mt-10 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 mobile-menu-link creative-neon-button" data-hover-cursor>
+            <!-- Prominent Mobile CTA (NOW REDIRECTS TO WHATSAPP) -->
+            <a href="https://wa.me/91951574045" target="_blank" class="mt-10 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 mobile-menu-link creative-neon-button" data-hover-cursor>
                 START PROJECT NOW
             </a>
         </nav>
@@ -376,8 +407,8 @@
                         <li>Optimized Mobile Order Flow.</li>
                         <li>High-Speed Page Loading.</li>
                     </ul>
-                    <!-- CTA Button (NOW USING CREATIVE CLASS) -->
-                    <a href="#contact" class="w-full inline-block text-center px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button" data-hover-cursor>
+                    <!-- CTA Button (NOW REDIRECTS TO WHATSAPP) -->
+                    <a href="https://wa.me/91951574045" target="_blank" class="w-full inline-block text-center px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button" data-hover-cursor>
                         CONTACT NOW - Build This!
                     </a>
                 </div>
@@ -437,8 +468,8 @@
                         </div>
                     </li>
                 </ul>
-                <!-- Claim Offer CTA (NOW USING CREATIVE CLASS) -->
-                <a href="#contact" class="inline-block mt-6 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button transform hover:scale-105" data-hover-cursor>
+                <!-- Claim Offer CTA (NOW REDIRECTS TO WHATSAPP) -->
+                <a href="https://wa.me/91951574045" target="_blank" class="inline-block mt-6 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button transform hover:scale-105" data-hover-cursor>
                     Claim Your 50% Off Offer
                 </a>
             </div>
@@ -501,17 +532,34 @@
             Initiate <span class="dynamic-text-fill">Transmission</span>
         </h2>
         <p class="text-xl max-w-2xl mx-auto text-gray-400 mb-10 scroll-reveal" data-scroll-delay="0.1">
-            Ready to engineer your next digital breakthrough?
+            Ready to engineer your next digital breakthrough? Use the form or connect instantly.
         </p>
 
-        <!-- Mock Contact Form (Glassmorphism Added) -->
-        <form class="space-y-6 glass-panel p-8 rounded-xl shadow-2xl scroll-reveal" data-scroll-delay="0.3">
-            <input type="text" placeholder="Your Designation/Name" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor>
-            <input type="email" placeholder="Secure Email Address" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor>
-            <textarea placeholder="Project Specifications (Brief)" rows="5" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor></textarea>
-            <!-- CONTACT NOW Button (NOW USING CREATIVE CLASS) -->
-            <button type="submit" class="w-full py-4 text-xl font-bold uppercase tracking-wider rounded-lg transition-all duration-300 transform hover:scale-[1.01] creative-neon-button" data-hover-cursor>
-                CONTACT NOW
+        <!-- NEW: Direct Contact Links -->
+        <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8 mb-10 scroll-reveal" data-scroll-delay="0.2">
+            <!-- WhatsApp Link (Added ID and new CSS class for consistent styling) -->
+            <a href="https://wa.me/91951574045" id="whatsapp-link" target="_blank" class="px-6 py-3 rounded-lg transition duration-300 font-bold flex items-center justify-center space-x-2" data-hover-cursor>
+                <!-- SVG for WhatsApp Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.477 2 2 6.477 2 12c0 3.189 1.583 6.014 4.024 7.712l-.938 2.812 3.033-.969C10.602 21.684 11.298 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/><path d="M8.7 7.7c.22-.5.5-.8.8-.9c.3-.1.6-.2.9-.2.3 0 .6.1.9.2.3.1.5.3.7.5.2.2.4.5.5.8.1.3.1.6.1.9 0 .3-.1.6-.2.9-.1.3-.3.5-.5.7-.2.2-.5.4-.7.5-.2.1-.5.2-.8.2-.3 0-.6-.1-.9-.2-.3-.1-.5-.3-.7-.5-.2-.2-.4-.5-.5-.8-.1-.3-.1-.6-.1-.9 0-.3.1-.6.2-.9z" fill="#25D366" stroke="none"/></svg>
+                <span>WhatsApp: +91 951574045</span>
+            </a>
+            <!-- Email Link (Added ID and new CSS class for fixed styling) -->
+            <a href="mailto:anuragwebbuilders@gmail.com" id="email-link" class="px-6 py-3 rounded-lg transition duration-300 font-bold flex items-center justify-center space-x-2" data-hover-cursor>
+                <!-- SVG for Email Icon -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                <span>Email: anuragwebbuilders@gmail.com</span>
+            </a>
+        </div>
+
+        <!-- Email Submission Form (handled by JS via mailto) -->
+        <form id="contact-form" class="space-y-6 glass-panel p-8 rounded-xl shadow-2xl scroll-reveal" data-scroll-delay="0.4">
+            <h3 class="text-2xl font-bold neon-text uppercase tracking-wider mb-2">Send Direct Brief</h3>
+            <input type="text" id="contact-name" placeholder="Your Designation/Name" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor>
+            <input type="email" id="contact-email" placeholder="Secure Email Address" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor>
+            <textarea id="contact-specs" placeholder="Project Specifications (Brief)" rows="5" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor></textarea>
+            
+            <button type="button" id="submit-contact" class="w-full py-4 text-xl font-bold uppercase tracking-wider rounded-lg transition-all duration-300 transform hover:scale-[1.01] creative-neon-button" data-hover-cursor>
+                SEND PROJECT BRIEF VIA EMAIL
             </button>
         </form>
     </section>
@@ -611,7 +659,7 @@
 
 
             // The content is an anchor tag wrapping the screenshot area
-            const wrapperStart = `<a href="${previewUrl}" target="_blank" class="w-full h-full absolute inset-0 cursor-pointer hover:scale-[1.01] transition-transform duration-300 relative group overflow-hidden block" data-hover-cursor style="transform-origin: center;">`;
+            const wrapperStart = `<a href="${previewUrl}" target="_blank" class="w-full h-64 md:h-96 absolute inset-0 cursor-pointer hover:scale-[1.01] transition-transform duration-300 relative group overflow-hidden block" data-hover-cursor style="transform-origin: center;">`;
             
             // UPDATED: Overlay text is now "VIEW LIVE SITE"
             const overlay = `
@@ -951,6 +999,43 @@
             animate();
         }
 
+        // --- 9. Contact Form Email Submission Handler (NEW) ---
+        function setupContactForm() {
+            const submitBtn = document.getElementById('submit-contact');
+            if (!submitBtn) return;
+            
+            const recipientEmail = 'anuragwebbuilders@gmail.com';
+
+            submitBtn.addEventListener('click', () => {
+                const name = document.getElementById('contact-name').value;
+                const email = document.getElementById('contact-email').value;
+                const specs = document.getElementById('contact-specs').value;
+
+                if (!name || !email || !specs) {
+                    // Using custom modal/message box instead of alert
+                    const message = 'ERROR: All fields are mandatory for sending a project brief.';
+                    console.error(message);
+                    // This is where a UI message would be displayed instead of alert()
+                    // Since we can't show a UI message, we'll just log it.
+                    return;
+                }
+                
+                // Construct the email body
+                const subject = encodeURIComponent(`New Project Brief from ${name}`);
+                const body = encodeURIComponent(
+                    `--- PROJECT INQUIRY ---\n\n` +
+                    `Sender Name: ${name}\n` +
+                    `Sender Email: ${email}\n\n` +
+                    `Project Specifications:\n${specs}\n\n` +
+                    `--- End of Brief ---`
+                );
+
+                // Open the mailto link
+                window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${body}`;
+            });
+        }
+
+
         // --- Initialize All Functions on Load ---
         window.onload = function() {
             // 1. Setup Canvas Background immediately (must be before content appears)
@@ -964,11 +1049,12 @@
             });
             displayIndustry('restaurant');
 
-            // 3. Run main visual effects
+            // 3. Run main visual effects and utilities
             runPreloader(); 
             setupParallaxHero();
             setupTiltEffect();
             setupMobileMenu();
+            setupContactForm(); // Initialize new form submission logic
 
             // Only initialize the custom cursor on larger screens
             if (window.innerWidth >= 768) {
