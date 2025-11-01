@@ -17,6 +17,18 @@
             background-color: #000000; /* Pure Black for Max Contrast */
             color: #e5e7eb; /* Light Gray text */
             overflow-x: hidden; /* Prevent horizontal scroll from animations */
+            position: relative; /* Base for fixed canvas background */
+        }
+        
+        /* --- FUTURISTIC CANVAS BACKGROUND --- */
+        #background-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2; /* Below body and content */
+            opacity: 0.1; /* Very subtle data stream */
         }
         
         /* --- Preloader Style (Smooth Load Interface) --- */
@@ -54,6 +66,16 @@
             background-color: #00ffff;
             box-shadow: 0 0 15px rgba(0, 255, 255, 0.7);
         }
+        
+        /* NEW: Navigation Link Hover Effect */
+        .nav-link-hover {
+            transition: all 0.3s ease;
+        }
+        .nav-link-hover:hover {
+            color: #00ffff !important; /* Force neon color on hover */
+            text-shadow: 0 0 8px #00ffff, 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
 
         /* --- Custom Cursor Style --- */
         #custom-cursor {
@@ -74,44 +96,65 @@
             background-color: rgba(0, 255, 255, 0.2) !important;
         }
 
-        /* --- Scroll Animation Styles (More Dramatic) --- */
+        /* --- Scroll Animation Styles (UPDATED: Sharper, Digital Easing) --- */
         .scroll-reveal {
             opacity: 0;
-            transform: translateY(60px) skewY(2deg); /* Added skew for dynamic entry */
-            transition: all 1.2s cubic-bezier(0.19, 1, 0.22, 1); /* Slower, smoother easing */
+            /* Cleaner, vertical slide up */
+            transform: translateY(40px);
+            /* Sharper, digital feel: easeOutExpo cubic-bezier */
+            transition: all 1.2s cubic-bezier(0.23, 1, 0.32, 1); 
+            will-change: transform, opacity; /* Performance boost */
         }
         .scroll-reveal.visible {
             opacity: 1;
-            transform: translateY(0) skewY(0deg);
+            transform: translateY(0);
         }
 
-        /* --- Project Card 3D Tilt Style (Used only for the process cards now) --- */
+        /* --- Hero Text Decode Effect (UPDATED: Simulating data resolving) --- */
+        .glitch-text span {
+            display: inline-block;
+            opacity: 0;
+            /* Initial transform for a subtle start */
+            transform: translateY(10px); 
+            animation: text-decode 0.8s forwards; 
+        }
+        
+        /* Fix: Ensure non-neon text resolves to white */
+        .glitch-text span {
+            color: #e5e7eb;
+        }
+        /* Fix: Ensure neon-text resolves to neon-cyan */
+        .glitch-text .neon-text span {
+            color: #00ffff;
+        }
+
+        @keyframes text-decode {
+            0% { 
+                opacity: 0.1; 
+                transform: translateY(10px); 
+                filter: blur(8px) hue-rotate(90deg); /* Start as blurry, highly distorted data */
+                color: #ff00ff; /* Start color is magenta */
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0) hue-rotate(0deg); /* End as sharp, resolved data */
+            }
+        }
+
+        /* --- Project Card 3D Tilt Style --- */
         .tilt-card {
             transform-style: preserve-3d;
             perspective: 1000px;
             transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s; 
             will-change: transform;
             border: 1px solid rgba(255, 255, 255, 0.1);
-            background: linear-gradient(145deg, #0f172a, #030712); /* Subtle gradient for depth */
+            background: linear-gradient(145deg, #0f172a, #030712); 
         }
         .tilt-card:hover {
              box-shadow: 0 20px 40px rgba(0, 255, 255, 0.2);
         }
         
-        /* --- Typing/Glitch Effect for Hero --- */
-        .glitch-text span {
-            display: inline-block;
-            opacity: 0;
-            transform: translateY(10px);
-            animation: text-reveal 0.5s forwards;
-        }
-        @keyframes text-reveal {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
         /* Active Tab Button Style */
         .tab-active {
             color: #000 !important;
@@ -119,6 +162,87 @@
             border-color: #00ffff !important;
             font-weight: 700;
         }
+
+        /* === 2025 AI-ERA BUTTON ANIMATION (ENHANCED) === */
+        @keyframes glow-pulse {
+            0% { box-shadow: 0 0 5px #00ffff, 0 0 10px rgba(0, 255, 255, 0.5); }
+            50% { box-shadow: 0 0 20px #00ffff, 0 0 40px rgba(0, 255, 255, 0.8), 0 0 60px rgba(0, 255, 255, 0.4); }
+            100% { box-shadow: 0 0 5px #00ffff, 0 0 10px rgba(0, 255, 255, 0.5); }
+        }
+
+        .creative-neon-button {
+            /* Initial "Powered On" State: Subtle background and shadow */
+            color: #00ffff; 
+            border-color: #00ffff;
+            background-color: rgba(0, 255, 255, 0.05); /* Subtle transparent fill */
+            transition: all 0.3s ease-in-out;
+            border: 2px solid #00ffff;
+            box-shadow: 0 0 5px rgba(0, 255, 255, 0.5); /* Constant subtle glow */
+            will-change: transform, box-shadow;
+        }
+
+        .creative-neon-button:hover {
+            /* Hover State: Full Color Fill, Dramatic Pulsating Shadow */
+            color: #000000; /* Dark text against bright background */
+            text-shadow: none; /* Remove text shadow when background is bright */
+            background-color: #00ffff; /* Solid fill */
+            animation: glow-pulse 1.5s infinite; /* Pulsating border/shadow animation */
+            transform: scale(1.02); 
+        }
+        
+        /* Holographic Header Effect */
+        #main-header {
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: 0 4px 15px rgba(0, 255, 255, 0.1);
+        }
+        
+        /* --- Glassmorphism / Aero Panel Effect --- */
+        .glass-panel {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            background-color: rgba(15, 23, 42, 0.4); /* slate-900 with high transparency */
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- Text Scanner Effect (Flicker) for Headings --- */
+        @keyframes text-scanner {
+            0% { text-shadow: 0 0 1px #00ffff, 0 0 2px rgba(255, 0, 255, 0.5); }
+            50% { text-shadow: 0 0 3px #00ffff, 0 0 8px rgba(0, 255, 255, 0.8), 2px 0 0 rgba(255, 0, 255, 0.7); }
+            100% { text-shadow: 0 0 1px #00ffff, 0 0 2px rgba(255, 0, 255, 0.5); }
+        }
+        .text-scanner {
+            animation: text-scanner 4s infinite alternate;
+            will-change: text-shadow;
+        }
+
+        /* === DYNAMIC GRADIENT TEXT FILL === */
+        @keyframes text-background-pan {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .dynamic-text-fill {
+            display: inline-block; /* Essential for clipping */
+            font-weight: 800;
+            /* Pulsating gradient background (Cyan, Blue, Magenta) */
+            background: linear-gradient(90deg, #00ffff, #007bff, #ff00ff, #00ffff, #007bff);
+            background-size: 400% auto; /* Wide gradient for slow, smooth panning */
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent; /* Makes the text transparent so the gradient shines through */
+            animation: text-background-pan 12s linear infinite; /* Slow, mesmerizing speed */
+            /* Add a minimal text shadow to ensure the word still flickers and is visible */
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5); 
+        }
+
+        /* Preview Overlay Style */
+        .preview-overlay {
+            background-color: rgba(0, 0, 0, 0.7);
+            transition: opacity 0.3s ease;
+            cursor: pointer;
+        }
+
     </style>
 </head>
 <body class="antialiased">
@@ -130,11 +254,14 @@
         </div>
     </div>
 
+    <!-- NEW: Dynamic Background Canvas (Z-index -2) -->
+    <canvas id="background-canvas"></canvas>
+
     <!-- Custom Animated Cursor -->
     <div id="custom-cursor" class="hidden md:block"></div>
 
-    <!-- Header / Navigation -->
-    <header class="p-6 md:p-10 sticky top-0 bg-black/90 backdrop-blur-md z-50">
+    <!-- Header / Navigation (Reduced Padding) -->
+    <header id="main-header" class="p-4 md:p-8 sticky top-0 bg-black/90 backdrop-blur-md z-50">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <!-- Logo / Brand Title -->
             <a href="#" class="text-3xl font-extrabold tracking-widest text-white hover:text-neon-accent transition duration-300" data-hover-cursor>
@@ -142,11 +269,12 @@
             </a>
             <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex space-x-8 items-center text-lg font-medium">
-                <a href="#showcase" class="hover:text-neon-accent transition duration-300" data-hover-cursor>Showcase</a>
-                <a href="#marketing" class="hover:text-neon-accent transition duration-300" data-hover-cursor>Pricing</a>
-                <a href="#process" class="hover:text-neon-accent transition duration-300" data-hover-cursor>Protocol</a>
-                <!-- CTA Button (Slightly Smaller for Navbar) -->
-                <a href="#contact" class="px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-lg bg-neon-accent text-gray-900 border-2 border-neon-accent hover:bg-transparent hover:text-neon-accent transition-all duration-300" data-hover-cursor>
+                <!-- UPDATED CLASS: Added nav-link-hover for fixed hover effect -->
+                <a href="#showcase" class="nav-link-hover transition duration-300" data-hover-cursor>Showcase</a>
+                <a href="#marketing" class="nav-link-hover transition duration-300" data-hover-cursor>Pricing</a>
+                <a href="#process" class="nav-link-hover transition duration-300" data-hover-cursor>Protocol</a>
+                <!-- CTA Button (NOW USING CREATIVE CLASS) -->
+                <a href="#contact" class="px-4 py-2 text-sm font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button" data-hover-cursor>
                     START YOUR PROJECT NOW
                 </a>
             </nav>
@@ -166,20 +294,21 @@
             </button>
         </div>
         <nav class="flex flex-col items-center justify-center space-y-8 h-4/5 text-2xl font-bold">
-            <a href="#showcase" class="text-white hover:text-neon-accent transition duration-300 mobile-menu-link" data-hover-cursor>Showcase</a>
-            <a href="#marketing" class="text-white hover:text-neon-accent transition duration-300 mobile-menu-link" data-hover-cursor>Pricing</a>
-            <a href="#process" class="text-white hover:text-neon-accent transition duration-300 mobile-menu-link" data-hover-cursor>Protocol</a>
-            <a href="#contact" class="text-white hover:text-neon-accent transition duration-300 mobile-menu-link" data-hover-cursor>Contact</a>
-            <!-- Prominent Mobile CTA -->
-            <a href="#contact" class="mt-10 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg bg-neon-accent text-gray-900 border-2 border-neon-accent transition-all duration-300 mobile-menu-link" data-hover-cursor>
+            <!-- UPDATED CLASS: Added nav-link-hover for fixed hover effect -->
+            <a href="#showcase" class="text-white nav-link-hover transition duration-300 mobile-menu-link" data-hover-cursor>Showcase</a>
+            <a href="#marketing" class="text-white nav-link-hover transition duration-300 mobile-menu-link" data-hover-cursor>Pricing</a>
+            <a href="#process" class="text-white nav-link-hover transition duration-300 mobile-menu-link" data-hover-cursor>Protocol</a>
+            <a href="#contact" class="text-white nav-link-hover transition duration-300 mobile-menu-link" data-hover-cursor>Contact</a>
+            <!-- Prominent Mobile CTA (NOW USING CREATIVE CLASS) -->
+            <a href="#contact" class="mt-10 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 mobile-menu-link creative-neon-button" data-hover-cursor>
                 START PROJECT NOW
             </a>
         </nav>
     </div>
 
     <!-- 1. Hero Section: Dynamic, Mouse-Controlled Parallax -->
-    <section id="hero-section" class="max-w-7xl mx-auto px-6 py-20 md:py-40 text-center relative z-10 overflow-hidden">
-        <div class="space-y-6">
+    <section id="hero-section" class="max-w-7xl mx-auto px-6 text-center relative z-10 overflow-hidden flex flex-col justify-center items-center min-h-screen">
+        <div class="space-y-6 py-20 md:py-40"> 
             <!-- Wrapper for Parallax Effect -->
             <div id="hero-parallax-wrapper">
                 <h1 id="hero-title" class="glitch-text text-5xl md:text-8xl font-black uppercase leading-tight md:leading-snug text-white" data-parallax-strength="0.05">
@@ -194,8 +323,9 @@
 
     <!-- 2. Industry Showcase Section: Dynamic Tabbed Content -->
     <section id="showcase" class="max-w-7xl mx-auto px-6 py-20 md:py-32">
-        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-white scroll-reveal">
-            Industry <span class="neon-text">Showroom</span>
+        <!-- Text Scanner Class Added -->
+        <h2 class="text-5xl md:text-6xl font-extrabold text-center mb-16 text-white scroll-reveal text-scanner">
+            Industry <span class="dynamic-text-fill">Showroom</span>
         </h2>
 
         <!-- Industry Selection Buttons - UPDATED FOR MORE OPTIONS -->
@@ -220,14 +350,15 @@
             </button>
         </div>
 
-        <!-- Dynamic Content Display Area -->
-        <div id="showroom-content" class="bg-gray-900 p-8 md:p-12 rounded-2xl shadow-2xl border border-gray-800 scroll-reveal" data-scroll-delay="0.3">
+        <!-- Dynamic Content Display Area (Glassmorphism Added) -->
+        <div id="showroom-content" class="glass-panel p-8 md:p-12 rounded-2xl shadow-2xl scroll-reveal" data-scroll-delay="0.3">
             <!-- Content will be injected here by JavaScript -->
             <div class="md:flex md:space-x-12">
                 <!-- Mock Design Preview (Left) -->
                 <div class="md:w-3/5 mb-8 md:mb-0">
-                    <h3 class="text-xl font-bold uppercase tracking-widest text-neon-accent mb-4">Mock Design Preview</h3>
-                    <div id="design-preview" class="w-full h-64 md:h-96 rounded-lg border-4 border-white shadow-xl flex justify-center items-center text-center text-gray-400 p-4" style="background-color: #0d0d0d; border-color: #00ffff;">
+                    <h3 class="text-xl font-bold uppercase tracking-widest text-neon-accent mb-4">Live Project Screenshot</h3>
+                    <!-- Preview Container is now a clickable, dynamic element -->
+                    <div id="design-preview" class="w-full h-64 md:h-96 rounded-lg border-4 border-white shadow-xl flex justify-center items-center text-center text-gray-400 p-4 relative overflow-hidden" style="background-color: #0d0d0d; border-color: #00ffff;">
                         <span class="text-lg font-semibold">Live Preview of **Restaurant** UI/UX.</span>
                     </div>
                 </div>
@@ -245,7 +376,8 @@
                         <li>Optimized Mobile Order Flow.</li>
                         <li>High-Speed Page Loading.</li>
                     </ul>
-                    <a href="#contact" class="w-full inline-block text-center px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg bg-neon-accent text-gray-900 border-2 border-neon-accent hover:bg-transparent hover:text-neon-accent transition-all duration-300" data-hover-cursor>
+                    <!-- CTA Button (NOW USING CREATIVE CLASS) -->
+                    <a href="#contact" class="w-full inline-block text-center px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button" data-hover-cursor>
                         CONTACT NOW - Build This!
                     </a>
                 </div>
@@ -255,11 +387,13 @@
 
     <!-- 2.5. Value Proposition / Marketing Section -->
     <section id="marketing" class="max-w-7xl mx-auto px-6 py-20 md:py-32">
-        <div class="grid md:grid-cols-2 gap-12 items-center bg-gray-950/50 p-8 md:p-12 rounded-3xl border border-gray-900 shadow-2xl">
+        <!-- Marketing Container (Glassmorphism Added) -->
+        <div class="grid md:grid-cols-2 gap-12 items-center glass-panel p-8 md:p-12 rounded-3xl shadow-2xl">
             <!-- Left Column: Value Proposition & Quote -->
             <div class="text-left">
-                <h2 class="text-5xl md:text-6xl font-extrabold mb-8 text-white scroll-reveal">
-                    Affordable Website <span class="neon-text">Pricing</span>
+                <!-- Text Scanner Class Added -->
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-8 text-white scroll-reveal text-scanner">
+                    Affordable Website <span class="dynamic-text-fill">Pricing</span>
                 </h2>
                 <p class="text-xl text-gray-400 mb-6 scroll-reveal" data-scroll-delay="0.1">
                     In a crowded digital world, creators need more than just a website; they need an engineered advantage. We eliminate the industry standard of inflated costs without compromising on cutting-edge design or robust architecture.
@@ -303,17 +437,19 @@
                         </div>
                     </li>
                 </ul>
-                <a href="#contact" class="inline-block mt-6 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg border-2 border-neon-accent text-white hover:bg-neon-accent hover:text-gray-900 transition-all duration-300 transform hover:scale-105" data-hover-cursor>
+                <!-- Claim Offer CTA (NOW USING CREATIVE CLASS) -->
+                <a href="#contact" class="inline-block mt-6 px-8 py-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button transform hover:scale-105" data-hover-cursor>
                     Claim Your 50% Off Offer
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- 3. Process Section: AI-Inspired Workflow (Unchanged) -->
+    <!-- 3. Process Section: AI-Inspired Workflow -->
     <section id="process" class="max-w-7xl mx-auto px-6 py-20 md:py-32 text-center">
-        <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-white scroll-reveal">
-            The <span class="neon-text">Protocol</span>
+        <!-- Text Scanner Class Added -->
+        <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-white scroll-reveal text-scanner">
+            The <span class="dynamic-text-fill">Protocol</span>
         </h2>
         <p class="text-xl md:text-2xl max-w-3xl mx-auto text-gray-400 mb-20 scroll-reveal" data-scroll-delay="0.1">
             Engineered efficiency for groundbreaking results.
@@ -358,21 +494,23 @@
         </div>
     </section>
 
-    <!-- 4. Contact Section (Unchanged) -->
+    <!-- 4. Contact Section -->
     <section id="contact" class="max-w-4xl mx-auto px-6 py-20 md:py-32 text-center">
-        <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-white scroll-reveal">
-            Initiate <span class="neon-text">Transmission</span>
+        <!-- Text Scanner Class Added -->
+        <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-white scroll-reveal text-scanner">
+            Initiate <span class="dynamic-text-fill">Transmission</span>
         </h2>
         <p class="text-xl max-w-2xl mx-auto text-gray-400 mb-10 scroll-reveal" data-scroll-delay="0.1">
             Ready to engineer your next digital breakthrough?
         </p>
 
-        <!-- Mock Contact Form -->
-        <form class="space-y-6 bg-gray-900/50 backdrop-blur-sm p-8 rounded-xl shadow-2xl scroll-reveal" data-scroll-delay="0.3">
+        <!-- Mock Contact Form (Glassmorphism Added) -->
+        <form class="space-y-6 glass-panel p-8 rounded-xl shadow-2xl scroll-reveal" data-scroll-delay="0.3">
             <input type="text" placeholder="Your Designation/Name" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor>
             <input type="email" placeholder="Secure Email Address" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor>
             <textarea placeholder="Project Specifications (Brief)" rows="5" class="w-full p-4 bg-gray-950 border border-gray-700 rounded-lg focus:ring-2 focus:ring-neon-accent focus:border-neon-accent outline-none text-white transition duration-300" data-hover-cursor></textarea>
-            <button type="submit" class="w-full py-4 text-xl font-bold uppercase tracking-wider rounded-lg bg-neon-accent text-gray-900 border-2 border-neon-accent hover:bg-transparent hover:text-neon-accent transition-all duration-300 transform hover:scale-[1.01]" data-hover-cursor>
+            <!-- CONTACT NOW Button (NOW USING CREATIVE CLASS) -->
+            <button type="submit" class="w-full py-4 text-xl font-bold uppercase tracking-wider rounded-lg transition-all duration-300 transform hover:scale-[1.01] creative-neon-button" data-hover-cursor>
                 CONTACT NOW
             </button>
         </form>
@@ -390,7 +528,7 @@
             'restaurant': {
                 title: "Fine Dining & Delivery Platform",
                 description: "High-impact design focused on visual menu presentation and seamless online ordering.",
-                previewText: "Live Preview of **Restaurant** UI/UX.",
+                previewUrl: "https://www.your-gemini-restaurant-site.com", // **EDIT THIS LINK**
                 features: [
                     "Online Reservation Integration.",
                     "Visual Menu & Gallery Slideshows.",
@@ -401,7 +539,7 @@
             'realestate': {
                 title: "Luxury Property Listing Portal",
                 description: "A fast, data-rich platform engineered to showcase properties with immersive visuals.",
-                previewText: "Live Preview of **Real Estate** Portal Dashboard.",
+                previewUrl: "https://www.your-gemini-realestate-site.com", // **EDIT THIS LINK**
                 features: [
                     "Interactive 360° Virtual Tours (Mock).",
                     "Advanced Map Search Filtering.",
@@ -412,7 +550,7 @@
             'marketing': {
                 title: "High-Conversion Agency Website",
                 description: "A dynamic marketing site built to capture leads and clearly present service ROI data.",
-                previewText: "Live Preview of **Marketing Agency** Landing Page.",
+                previewUrl: "https://www.your-gemini-marketing-site.com", // **EDIT THIS LINK**
                 features: [
                     "Scroll-Triggered Data Stats.",
                     "Integrated Lead-Capture Forms.",
@@ -423,7 +561,7 @@
             'portfolio': {
                 title: "Personal Brand Portfolio",
                 description: "A highly custom, animated platform designed for professional branding and job acquisition.",
-                previewText: "Live Preview of **Personal Portfolio** with Custom Animation.",
+                previewUrl: "https://www.your-gemini-portfolio-site.com", // **EDIT THIS LINK**
                 features: [
                     "Custom Cursor & Mouse Effects.",
                     "Animated Skills Timeline.",
@@ -431,10 +569,10 @@
                     "Clear, Direct Contact CTA."
                 ]
             },
-            'entrepreneur': { // NEW DATA
+            'entrepreneur': { 
                 title: "Scalable Startup MVP & Pitch Deck",
                 description: "Building the Minimum Viable Product (MVP) required for rapid testing and investor pitches.",
-                previewText: "Live Preview of **Startup MVP** User Flow.",
+                previewUrl: "https://www.your-gemini-startup-site.com", // **EDIT THIS LINK**
                 features: [
                     "Rapid Prototype Development.",
                     "Database Integration (NoSQL).",
@@ -442,10 +580,10 @@
                     "Scalable Cloud Architecture."
                 ]
             },
-            'custom': { // NEW DATA
+            'custom': { 
                 title: "Unique / Highly Specialized Solution",
                 description: "Complex projects, unique integrations, and solutions that require specialized engineering.",
-                previewText: "Live Preview of **Custom System** Interface.",
+                previewUrl: "https://www.your-gemini-custom-site.com", // **EDIT THIS LINK**
                 features: [
                     "API Integration (Third-Party/Legacy).",
                     "Custom Logic & Algorithm Implementation.",
@@ -455,17 +593,62 @@
             }
         };
 
-        // --- Content Switching Function ---
+        // --- Content Switching Function (UPDATED for Screenshot & Live Link) ---
         function displayIndustry(key) {
             const data = industryData[key];
             if (!data) return;
 
-            // Update content elements
+            // 1. Update text content
             document.getElementById('industry-title').textContent = data.title;
             document.getElementById('industry-description').textContent = data.description;
-            document.getElementById('design-preview').innerHTML = `<span class="text-lg font-semibold">${data.previewText.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')}</span>`;
             
-            // Update features list
+            // 2. Prepare dynamic content structure
+            const defaultStyle = "w-full h-full";
+            const previewUrl = data.previewUrl || "#"; 
+
+            // Placeholder image URL - REPLACE THIS WITH YOUR ACTUAL SCREENSHOT URLS
+            const placeholderImageUrl = `https://placehold.co/800x600/0d0d0d/00ffff?text=ADD+PROJECT+SCREENSHOT+HERE+FOR+${key.toUpperCase()}`;
+
+
+            // The content is an anchor tag wrapping the screenshot area
+            const wrapperStart = `<a href="${previewUrl}" target="_blank" class="w-full h-full absolute inset-0 cursor-pointer hover:scale-[1.01] transition-transform duration-300 relative group overflow-hidden block" data-hover-cursor style="transform-origin: center;">`;
+            
+            // UPDATED: Overlay text is now "VIEW LIVE SITE"
+            const overlay = `
+                <div class="absolute inset-0 preview-overlay flex justify-center items-center opacity-0 group-hover:opacity-100 transition duration-300 z-10">
+                    <span class="text-xl neon-text font-bold tracking-widest border-2 border-neon-accent p-3 rounded-lg bg-black/50">VIEW LIVE SITE</span>
+                </div>
+            `;
+            const wrapperEnd = `</a>`;
+
+            // NEW: Simplified Content Structure - relies on background image
+            const previewContent = wrapperStart + overlay + `
+                <div class="${defaultStyle} bg-cover bg-center" style="background-image: url('${placeholderImageUrl}');">
+                    <div class="w-full h-full flex justify-center items-center text-center p-4 text-gray-400 backdrop-brightness-75">
+                         <!-- Screenshot Area (Background Image) -->
+                    </div>
+                </div>
+            ` + wrapperEnd;
+            
+            // 3. Inject new structure into the preview container
+            const previewContainer = document.getElementById('design-preview');
+            
+            // Reset container styling to correctly display the image/placeholder inside
+            previewContainer.innerHTML = '';
+            previewContainer.style.border = 'none';
+            previewContainer.style.backgroundColor = 'transparent'; 
+            previewContainer.classList.remove('flex', 'justify-center', 'items-center', 'p-4', 'text-center');
+            previewContainer.style.borderColor = 'transparent';
+            
+            // Append the new content (the clickable <a> tag)
+            previewContainer.appendChild(document.createRange().createContextualFragment(previewContent));
+            
+            // Restore necessary parent styling (optional, but good practice)
+            document.getElementById('design-preview').style.backgroundColor = '#0d0d0d';
+            document.getElementById('design-preview').style.borderColor = '#00ffff';
+
+
+            // 4. Update features list (unchanged logic)
             const featuresList = document.getElementById('industry-features');
             featuresList.innerHTML = '';
             data.features.forEach(feature => {
@@ -474,7 +657,7 @@
                 featuresList.appendChild(li);
             });
 
-            // Update button styles
+            // 5. Update button styles (unchanged logic)
             document.querySelectorAll('.industry-tab').forEach(btn => {
                 btn.classList.remove('tab-active');
             });
@@ -486,7 +669,8 @@
             let delay = delayStart;
             text.split('').forEach((char) => {
                 const charSpan = document.createElement('span');
-                charSpan.textContent = char; 
+                charSpan.textContent = char === ' ' ? '\u00A0' : char; // Handle non-breaking space replacement
+                // The animation delay is set here, the animation properties are in CSS
                 charSpan.style.animationDelay = `${0.03 * delay}s`;
                 wrapperElement.appendChild(charSpan);
                 delay++;
@@ -511,7 +695,7 @@
             }, 1500);
         }
         
-        // --- 2. Hero Text Reveal Animation (REVISED for proper structure) ---
+        // --- 2. Hero Text Reveal Animation (REVISED for Data Decode Effect) ---
         function runHeroTextAnimation() {
             const titleElement = document.getElementById('hero-title');
             if (!titleElement) return;
@@ -585,10 +769,10 @@
             });
         }
 
-        // --- 5. Parallax Mouse Effect for Hero ---
+        // --- 5. Parallax Mouse Effect for Hero (Desktop Only) ---
         function setupParallaxHero() {
             const target = document.getElementById('hero-title');
-            if (!target) return;
+            if (!target || window.innerWidth < 768) return; // Disable on mobile
 
             const strength = parseFloat(target.getAttribute('data-parallax-strength')) || 0.05;
 
@@ -600,8 +784,8 @@
                 // Apply slight perspective and rotation for a 3D feel
                 target.style.transform = `
                     translate3d(${-x}px, ${-y}px, 0)
-                    rotateX(${-y * 0.1}deg) 
-                    rotateY(${x * 0.1}deg)
+                    rotateX(${-y * 0.05}deg) 
+                    rotateY(${x * 0.05}deg)
                 `;
                 target.style.transition = 'transform 0.1s ease-out';
             });
@@ -620,8 +804,8 @@
                     const centerY = rect.height / 2;
                     
                     // Calculate rotation angles
-                    const rotateX = ((y - centerY) / centerY) * maxTilt;
-                    const rotateY = ((x - centerX) / centerX) * -maxTilt; // Negative for correct direction
+                    const rotateX = ((y - centerY) / centerY) * maxTilt * 0.5; // Reduced tilt impact
+                    const rotateY = ((x - centerX) / centerX) * -maxTilt * 0.5; // Negative for correct direction
 
                     // Apply the 3D transform
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
@@ -629,6 +813,7 @@
 
                 // Mouse Events (Desktop)
                 card.addEventListener('mousemove', (e) => {
+                    if (window.innerWidth < 768) return;
                     const rect = card.getBoundingClientRect();
                     const x = e.clientX - rect.left;
                     const y = e.clientY - rect.top;
@@ -636,14 +821,14 @@
                 });
 
                 card.addEventListener('mouseleave', () => {
+                    if (window.innerWidth < 768) return;
                     // Reset on mouse leave with transition
                     card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
                 });
                 
-                // Touch Events (Mobile - for a simpler interaction, tilt on press)
+                // Touch Events (Mobile - simple tilt on press)
                 card.addEventListener('touchstart', (e) => {
                     e.preventDefault(); // Prevent accidental scrolling
-                    const rect = card.getBoundingClientRect();
                     // Use a fixed tilt angle for touch press/hold
                     const rotateX = 5;
                     const rotateY = -5; 
@@ -656,7 +841,7 @@
                 });
             });
         }
-
+        
         // --- 7. Mobile Menu Logic ---
         function setupMobileMenu() {
             const openBtn = document.getElementById('mobile-menu-button');
@@ -686,22 +871,104 @@
             });
         }
 
+        // --- 8. Canvas Background Animation ---
+        function setupCanvasBackground() {
+            const canvas = document.getElementById('background-canvas');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+
+            // Set canvas dimensions on load and resize
+            function resizeCanvas() {
+                width = window.innerWidth;
+                height = window.innerHeight;
+                canvas.width = width;
+                canvas.height = height;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Array of line objects for the data stream effect
+            const lines = [];
+            const maxLines = 40;
+            const neonColor = 'rgba(0, 255, 255, 0.08)'; // Very low opacity cyan
+
+            // Create initial lines
+            for (let i = 0; i < maxLines; i++) {
+                lines.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    length: 10 + Math.random() * 200,
+                    speed: 0.1 + Math.random() * 0.5,
+                    direction: Math.random() * 2 * Math.PI, // Random angle
+                    width: 1 + Math.random() * 2,
+                });
+            }
+
+            // Animation Loop
+            function animate() {
+                // Subtle fade effect to create trails
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; 
+                ctx.fillRect(0, 0, width, height);
+                
+                ctx.strokeStyle = neonColor;
+
+                lines.forEach(line => {
+                    // Move the line segment
+                    line.x += Math.cos(line.direction) * line.speed;
+                    line.y += Math.sin(line.direction) * line.speed;
+
+                    // Calculate the end point of the line
+                    const endX = line.x + Math.cos(line.direction) * line.length;
+                    const endY = line.y + Math.sin(line.direction) * line.length;
+
+                    // Draw line
+                    ctx.beginPath();
+                    ctx.moveTo(line.x, line.y);
+                    ctx.lineTo(endX, endY);
+                    ctx.lineWidth = line.width;
+                    ctx.stroke();
+
+                    // Check boundaries and reset if out of view
+                    if (line.x < -line.length || line.x > width + line.length || 
+                        line.y < -line.length || line.y > height + line.length) {
+                        
+                        // Randomly reset the line from an opposite edge
+                        if (Math.random() < 0.5) {
+                            line.x = line.x < 0 ? width + line.length : -line.length;
+                            line.y = Math.random() * height;
+                        } else {
+                            line.x = Math.random() * width;
+                            line.y = line.y < 0 ? height + line.length : -line.length;
+                        }
+                    }
+                });
+
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
         // --- Initialize All Functions on Load ---
         window.onload = function() {
-            // Set up event listeners for industry tabs
+            // 1. Setup Canvas Background immediately (must be before content appears)
+            setupCanvasBackground(); 
+
+            // 2. Setup initial content and UI logic
             document.querySelectorAll('.industry-tab').forEach(button => {
                 button.addEventListener('click', (e) => {
                     displayIndustry(e.target.getAttribute('data-industry'));
                 });
             });
-            // Display the first industry by default
             displayIndustry('restaurant');
 
-            // Must run preloader first, which then calls other setup functions
-            runPreloader();
+            // 3. Run main visual effects
+            runPreloader(); 
             setupParallaxHero();
             setupTiltEffect();
-            setupMobileMenu(); // Call new mobile menu logic
+            setupMobileMenu();
 
             // Only initialize the custom cursor on larger screens
             if (window.innerWidth >= 768) {
