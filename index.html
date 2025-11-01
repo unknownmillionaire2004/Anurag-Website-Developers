@@ -573,10 +573,11 @@
     <script>
         // --- Industry Data (For Dynamic Switching) ---
         const industryData = {
+            // ALL PREVIEW URLs ARE NOW SET TO THEIR SPECIFIC LIVE DEMOS
             'restaurant': {
                 title: "Fine Dining & Delivery Platform",
                 description: "High-impact design focused on visual menu presentation and seamless online ordering.",
-                previewUrl: "https://www.your-gemini-restaurant-site.com", // **EDIT THIS LINK**
+                previewUrl: "https://unknownmillionaire2004.github.io/Cafe-demo/", 
                 features: [
                     "Online Reservation Integration.",
                     "Visual Menu & Gallery Slideshows.",
@@ -587,7 +588,7 @@
             'realestate': {
                 title: "Luxury Property Listing Portal",
                 description: "A fast, data-rich platform engineered to showcase properties with immersive visuals.",
-                previewUrl: "https://www.your-gemini-realestate-site.com", // **EDIT THIS LINK**
+                previewUrl: "https://unknownmillionaire2004.github.io/YANAMALA-DEVELOPERS/", 
                 features: [
                     "Interactive 360° Virtual Tours (Mock).",
                     "Advanced Map Search Filtering.",
@@ -598,7 +599,7 @@
             'marketing': {
                 title: "High-Conversion Agency Website",
                 description: "A dynamic marketing site built to capture leads and clearly present service ROI data.",
-                previewUrl: "https://www.your-gemini-marketing-site.com", // **EDIT THIS LINK**
+                previewUrl: "https://unknownmillionaire2004.github.io/Marketing-Agency-Template/", 
                 features: [
                     "Scroll-Triggered Data Stats.",
                     "Integrated Lead-Capture Forms.",
@@ -609,7 +610,7 @@
             'portfolio': {
                 title: "Personal Brand Portfolio",
                 description: "A highly custom, animated platform designed for professional branding and job acquisition.",
-                previewUrl: "https://www.your-gemini-portfolio-site.com", // **EDIT THIS LINK**
+                previewUrl: "https://unknownmillionaire2004.github.io/Futuristic-AI-Portfolio-Template/", 
                 features: [
                     "Custom Cursor & Mouse Effects.",
                     "Animated Skills Timeline.",
@@ -620,7 +621,7 @@
             'entrepreneur': { 
                 title: "Scalable Startup MVP & Pitch Deck",
                 description: "Building the Minimum Viable Product (MVP) required for rapid testing and investor pitches.",
-                previewUrl: "https://www.your-gemini-startup-site.com", // **EDIT THIS LINK**
+                previewUrl: "https://unknownmillionaire2004.github.io/NutriCrave/", 
                 features: [
                     "Rapid Prototype Development.",
                     "Database Integration (NoSQL).",
@@ -631,7 +632,7 @@
             'custom': { 
                 title: "Unique / Highly Specialized Solution",
                 description: "Complex projects, unique integrations, and solutions that require specialized engineering.",
-                previewUrl: "https://www.your-gemini-custom-site.com", // **EDIT THIS LINK**
+                previewUrl: "https://unknownmillionaire2004.github.io/anurag-properties-/", 
                 features: [
                     "API Integration (Third-Party/Legacy).",
                     "Custom Logic & Algorithm Implementation.",
@@ -734,7 +735,6 @@
                 preloader.style.opacity = '0';
                 // Remove it from the DOM after transition is complete
                 setTimeout(() => {
-                    preloader.style.display = 'none';
                     document.body.style.overflowY = 'auto'; // Re-enable scrolling
                     // Start main animations after preloader is gone
                     setupScrollReveal();
