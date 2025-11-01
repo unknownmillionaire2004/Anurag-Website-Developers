@@ -727,18 +727,32 @@
             return delay;
         }
 
+        // --- 10. Functions to run AFTER preloader completion (Visual Effects) ---
+        function setupPostLoadEffects() {
+            setupScrollReveal(); // Setup scroll observer for content fading in
+            runHeroTextAnimation(); // Run the character decode animation
+            setupParallaxHero(); // Start the mouse parallax effect (desktop only)
+            setupTiltEffect(); // Start the 3D card tilt effect
+        }
+
         // --- 1. Preloader Logic (Smooth Load) ---
         function runPreloader() {
             const preloader = document.getElementById('preloader');
+            if (!preloader) {
+                // Fail-safe: If preloader element is missing, run post-load effects immediately.
+                setupPostLoadEffects(); 
+                return;
+            }
             // Wait for 1.5 seconds (to show the cool animation) then fade out
             setTimeout(() => {
                 preloader.style.opacity = '0';
                 // Remove it from the DOM after transition is complete
                 setTimeout(() => {
+                    preloader.style.display = 'none';
                     document.body.style.overflowY = 'auto'; // Re-enable scrolling
+                    
                     // Start main animations after preloader is gone
-                    setupScrollReveal();
-                    runHeroTextAnimation();
+                    setupPostLoadEffects(); 
                 }, 1000); // 1 second matches the CSS transition duration
             }, 1500);
         }
@@ -1038,23 +1052,21 @@
 
         // --- Initialize All Functions on Load ---
         window.onload = function() {
-            // 1. Setup Canvas Background immediately (must be before content appears)
+            // 1. Setup Canvas Background immediately
             setupCanvasBackground(); 
 
-            // 2. Setup initial content and UI logic
+            // 2. Setup essential UI and event listeners (MUST be first for functionality)
             document.querySelectorAll('.industry-tab').forEach(button => {
                 button.addEventListener('click', (e) => {
                     displayIndustry(e.target.getAttribute('data-industry'));
                 });
             });
-            displayIndustry('restaurant');
+            displayIndustry('restaurant'); // Initialize first tab content
+            setupMobileMenu(); 
+            setupContactForm(); 
 
-            // 3. Run main visual effects and utilities
+            // 3. Run preloader, which handles starting the remaining visual effects (Parallax, Tilt, Scroll Reveal)
             runPreloader(); 
-            setupParallaxHero();
-            setupTiltEffect();
-            setupMobileMenu();
-            setupContactForm(); // Initialize new form submission logic
 
             // Only initialize the custom cursor on larger screens
             if (window.innerWidth >= 768) {
