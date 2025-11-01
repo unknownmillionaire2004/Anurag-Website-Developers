@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- START SEO OPTIMIZATION -->
-    <title>Anurag Web Builders | Custom, Affordable Website Design & Development Starting at ₹5000</title>
-    <meta name="description" content="Looking for the best website builder in India? Anurag Web Builders offers custom, unique website development starting at ₹5000—50% less than competitors. Get a high-performance site today.">
+    <title>Anurag Builders | Custom, Affordable Website Design & Development Starting at ₹5000</title>
+    <meta name="description" content="Looking for the best website builder in India? Anurag Builders offers custom, unique website development starting at ₹5000—50% less than competitors. Get a high-performance site today.">
     <!-- END SEO OPTIMIZATION -->
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -20,7 +20,7 @@
             position: relative; /* Base for fixed canvas background */
         }
         
-        /* --- FUTURISTIC CANVAS BACKGROUND --- */
+        /* --- FUTURISTIC CANVAS BACKGROUND (ENHANCED) --- */
         #background-canvas {
             position: fixed;
             top: 0;
@@ -28,7 +28,7 @@
             width: 100%;
             height: 100%;
             z-index: -2; /* Below body and content */
-            opacity: 0.1; /* Very subtle data stream */
+            opacity: 0.25; /* INCREASED for better visibility */
         }
         
         /* --- Preloader Style (Smooth Load Interface) --- */
@@ -96,7 +96,7 @@
             background-color: rgba(0, 255, 255, 0.2) !important;
         }
 
-        /* --- Scroll Animation Styles (UPDATED: Sharper, Digital Easing) --- */
+        /* --- Scroll Animation Styles (UPDATED: Sharper, Digital Easing) */
         .scroll-reveal {
             opacity: 0;
             /* Cleaner, vertical slide up */
@@ -318,7 +318,7 @@
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <!-- Logo / Brand Title -->
             <a href="#" class="text-3xl font-extrabold tracking-widest text-white hover:text-neon-accent transition duration-300" data-hover-cursor>
-                <span class="neon-text">ANURAG</span> WEB BUILDERS
+                <span class="neon-text">ANURAG</span> BUILDERS
             </a>
             <!-- Desktop Navigation Links -->
             <nav class="hidden md:flex space-x-8 items-center text-lg font-medium">
@@ -361,7 +361,8 @@
 
     <!-- 1. Hero Section: Dynamic, Mouse-Controlled Parallax -->
     <section id="hero-section" class="max-w-7xl mx-auto px-6 text-center relative z-10 overflow-hidden flex flex-col justify-center items-center min-h-screen">
-        <div class="space-y-6 py-20 md:py-40"> 
+        <!-- ADJUSTED: Vertical padding reduced on mobile -->
+        <div class="space-y-6 py-24 md:py-40"> 
             <!-- Wrapper for Parallax Effect -->
             <div id="hero-parallax-wrapper">
                 <h1 id="hero-title" class="glitch-text text-5xl md:text-8xl font-black uppercase leading-tight md:leading-snug text-white" data-parallax-strength="0.05">
@@ -383,14 +384,16 @@
 
         <!-- Industry Selection Buttons - UPDATED FOR MORE OPTIONS -->
         <div class="flex flex-wrap justify-center space-x-2 md:space-x-4 mb-12 scroll-reveal" data-scroll-delay="0.1">
-            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300 tab-active" data-industry="restaurant" data-hover-cursor>
+            <!-- MOVED TO FIRST: Marketing / Agency -->
+            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300 tab-active" data-industry="marketing" data-hover-cursor>
+                Marketing / Agency
+            </button>
+            <!-- MOVED TO SECOND: Restaurant / Cafe (removed tab-active) -->
+            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="restaurant" data-hover-cursor>
                 Restaurant / Cafe
             </button>
             <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="realestate" data-hover-cursor>
                 Real Estate / Property
-            </button>
-            <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="marketing" data-hover-cursor>
-                Marketing / Agency
             </button>
             <button class="industry-tab px-4 py-3 mb-2 md:mb-0 text-white border border-gray-700 rounded-lg hover:bg-neon-accent hover:text-gray-900 transition duration-300" data-industry="portfolio" data-hover-cursor>
                 Personal Portfolio
@@ -418,7 +421,7 @@
                 </div>
 
                 <!-- Features & CTA (Right) -->
-                <div class="md:w-2/5">
+                <div class="md:w-2/5 mt-8 md:mt-0"> <!-- ADDED mt-8 for mobile stacking clarity -->
                     <h3 id="industry-title" class="text-4xl font-extrabold text-white mb-4">Fine Dining & Delivery Platform</h3>
                     <p id="industry-description" class="text-gray-400 mb-6">
                         High-impact design focused on visual menu presentation and seamless online ordering.
@@ -432,7 +435,8 @@
                     </ul>
                     
                     <!-- NEW: Dedicated VIEW LIVE SITE Button (Secondary CTA) -->
-                    <a id="view-live-site-btn" target="_blank" class="w-full inline-block text-center px-8 py-3 mb-4 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button-alt" data-hover-cursor>
+                    <!-- Removed mb-4 here, will add spacing via mb-3 to primary CTA below for tighter stack -->
+                    <a id="view-live-site-btn" target="_blank" class="w-full inline-block text-center px-8 py-3 mb-3 text-lg font-bold uppercase tracking-wider rounded-lg transition-all duration-300 creative-neon-button-alt" data-hover-cursor>
                         VIEW LIVE SITE
                     </a>
 
@@ -473,7 +477,7 @@
             </div>
 
             <!-- Right Column: Unique Offering Highlights -->
-            <div class="space-y-6 md:pl-10">
+            <div class="space-y-6 md:pl-10 mt-8 md:mt-0"> <!-- ADDED mt-8 for mobile stacking clarity -->
                 <h3 class="text-3xl font-bold neon-text uppercase tracking-wider mb-6 scroll-reveal" data-scroll-delay="0.7">
                     Why Our Protocol?
                 </h3>
@@ -506,7 +510,7 @@
     </section>
 
     <!-- 3. Process Section: AI-Inspired Workflow -->
-    <section id="process" class="max-w-7xl mx-auto px-6 py-20 md:py-32 text-center">
+    <section id="process" class="max-w-7xl mx-auto px-6 py-20 md:py-32">
         <!-- Text Scanner Class Added -->
         <h2 class="text-5xl md:text-6xl font-extrabold mb-10 text-white scroll-reveal text-scanner">
             The <span class="dynamic-text-fill">Protocol</span>
@@ -565,6 +569,7 @@
         </p>
 
         <!-- NEW: Direct Contact Links -->
+        <!-- Adjusted spacing: space-y-4 is sufficient for mobile -->
         <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-8 mb-10 scroll-reveal" data-scroll-delay="0.2">
             <!-- WhatsApp Link (Added ID and new CSS class for consistent styling) -->
             <a href="https://wa.me/91951574045" id="whatsapp-link" target="_blank" class="px-6 py-3 rounded-lg transition duration-300 font-bold flex items-center justify-center space-x-2" data-hover-cursor>
@@ -595,7 +600,7 @@
 
     <!-- Footer -->
     <footer class="py-10 bg-black border-t border-gray-800 text-center text-gray-500">
-        <p class="text-sm">&copy; 2024 Anurag Web Builders | Custom Website Solutions. Engineered with Precision.</p>
+        <p class="text-sm">&copy; 2024 Anurag Builders | Custom Website Solutions. Engineered with Precision.</p>
     </footer>
 
     <!-- JavaScript for Animations and Cursor -->
@@ -978,7 +983,7 @@
             });
         }
 
-        // --- 8. Canvas Background Animation ---
+        // --- 8. Canvas Background Animation (ENHANCED) ---
         function setupCanvasBackground() {
             const canvas = document.getElementById('background-canvas');
             if (!canvas) return;
@@ -999,8 +1004,8 @@
 
             // Array of line objects for the data stream effect
             const lines = [];
-            const maxLines = 40;
-            const neonColor = 'rgba(0, 255, 255, 0.08)'; // Very low opacity cyan
+            const maxLines = 80; // INCREASED: More density
+            const neonColor = 'rgba(0, 255, 255, 0.1)'; // Slightly brighter line color
 
             // Create initial lines
             for (let i = 0; i < maxLines; i++) {
@@ -1008,7 +1013,7 @@
                     x: Math.random() * width,
                     y: Math.random() * height,
                     length: 10 + Math.random() * 200,
-                    speed: 0.1 + Math.random() * 0.5,
+                    speed: 0.1 + Math.random() * 0.6, // SLIGHTLY FASTER FLOW
                     direction: Math.random() * 2 * Math.PI, // Random angle
                     width: 1 + Math.random() * 2,
                 });
@@ -1016,8 +1021,8 @@
 
             // Animation Loop
             function animate() {
-                // Subtle fade effect to create trails
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; 
+                // Subtle fade effect to create trails (REDUCED ALPHA for sharper lines)
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.05)'; // Reduced from 0.1 to 0.05
                 ctx.fillRect(0, 0, width, height);
                 
                 ctx.strokeStyle = neonColor;
@@ -1106,7 +1111,8 @@
                     displayIndustry(e.target.getAttribute('data-industry'));
                 });
             });
-            displayIndustry('restaurant'); // Initialize first tab content
+            // UPDATED: Start on 'marketing' tab content by default
+            displayIndustry('marketing'); 
             setupMobileMenu(); 
             setupContactForm(); 
 
@@ -1121,4 +1127,3 @@
     </script>
 </body>
 </html>
-
